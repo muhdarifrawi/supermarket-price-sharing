@@ -9,7 +9,7 @@ def get_connection():
         host='localhost',
         user='admin',
         password='password',
-        database='chinook'
+        database='supermarket_price_sharing'
         )
     return connection
 
@@ -18,7 +18,24 @@ def form():
    return render_template("index.template.html")
 
 
+@app.route("/", methods=["POST"])
+def submit_form():
+    connection = get_connection()
+    cursor = connection.cursor()
+    username = request.form["username"]
 
+    
+    #username insertion to database
+    sql = """
+         INSERT INTO user(username)
+         VALUES ("{}")
+        """.format(username)
+    
+    cursor.execute(sql)
+    connection.commit()
+    
+    return render_template("thanks.template.html")
+    
 #"magic code" - - boilerplate
 if __name__ == "__main__":
    app.run(host=os.environ.get("IP"),
