@@ -36,6 +36,10 @@ def submit_form():
     
     return render_template("thanks.template.html")
     
+@app.route("/table")
+def table():
+    return render_template("table.template.html")
+    
 #"magic code" - - boilerplate
 if __name__ == "__main__":
    app.run(host=os.environ.get("IP"),
