@@ -38,7 +38,17 @@ def submit_form():
     
 @app.route("/table")
 def table():
-    return render_template("table.template.html")
+    connection = get_connection()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    
+    #username retrieval from database
+    sql = """
+         SELECT * FROM user
+        """
+        
+    cursor.execute(sql)
+    return render_template("table.template.html",results=cursor)
     
 #"magic code" - - boilerplate
 if __name__ == "__main__":
