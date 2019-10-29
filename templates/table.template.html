@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Submissions</title>
   </head>
   <body>
     <div class="container">
@@ -21,6 +21,8 @@
       <th scope="col">Supermarket</th>
       <th scope="col">Date/Time</th>
       <th scope="col">User</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -32,10 +34,13 @@
       <td scope="col">{{each_result["supermarket.name"]}}</td>
       <td scope="col">{{each_result["date"]}}</td>
       <td scope="col">{{each_result["username"]}}</td>
-      
+      <td scope="col"><a href="{{url_for('edit', itemcost_id=each_result['id'])}}">Edit</a></td>
+      <td scope="col"><a href="{{url_for("form")}}">Delete</a></td>
     </tr>
     {%endfor%}
   </tbody>
+  
+  <a href="{{url_for("form")}}">Back to Form</a>
 </table>
       
     </div>

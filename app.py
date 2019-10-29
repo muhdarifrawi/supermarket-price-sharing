@@ -13,12 +13,12 @@ def get_connection():
         )
     return connection
 
-@app.route("/")
+@app.route("/submit")
 def form():
    return render_template("index.template.html")
 
 
-@app.route("/", methods=["POST"])
+@app.route("/submit", methods=["POST"])
 def submit_form():
     connection = get_connection()
     cursor = connection.cursor(pymysql.cursors.DictCursor)
@@ -154,6 +154,24 @@ def table():
         
     cursor.execute(sql)
     return render_template("table.template.html",results=cursor)
+    
+@app.route("/edit/<itemcost_id>")
+def edit(itemcost_id):
+    connection = get_connection()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    
+    #username retrieval from database
+    sql = """
+        SELECT itemcost.id, itemcost.date, itemcost.cost, item.name, supermarket.name, user.username  FROM `itemcost` 
+        INNER JOIN user ON itemcost.user_id=user.id
+        INNER JOIN item ON itemcost.item_id=item.id
+        INNER JOIN supermarket ON itemcost.supermarket_id=supermarket.id
+        WHERE itemcost.id="{}"
+        """.format(itemcost_id)
+        
+    cursor.execute(sql)
+    return render_template("edit.template.html",results=cursor)
     
 #"magic code" - - boilerplate
 if __name__ == "__main__":
