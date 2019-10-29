@@ -17,13 +17,18 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">User</th>
+      <th scope="col">Supermarket</th>
+      <th scope="col">Location</th>
     </tr>
   </thead>
   <tbody>
     {% for each_result in results %}
     <tr>
       <th scope="col">{{each_result["id"]}}</th>
-      <td scope="col">{{each_result["username"]}}</td>
+      <td scope="col">{{each_result["user"]}}</td>
+      <td scope="col">{{each_result["supermarket"]}}</td>
+      <td scope="col">{{each_result["supermarket.name"]}}</td>
+      
     </tr>
     {%endfor%}
   </tbody>
