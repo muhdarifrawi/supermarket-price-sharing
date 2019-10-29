@@ -126,12 +126,6 @@ def submit_form():
     cursor.execute(SQL_SEARCH_ITEM_ID)
     item_id = cursor.fetchone()["id"] 
     
-    # #find current datetime
-    # SQL_SELECT_DATETIME="""
-    # SELECT CURRENT_TIMESTAMP
-    # """
-    # datetime=cursor.execute(SQL_SELECT_DATETIME)
-    # print(datetime)
     #cost insertion to database
     sql = """
          INSERT INTO itemcost(id, date, cost, user_id, item_id, supermarket_id)
@@ -152,10 +146,10 @@ def table():
     
     #username retrieval from database
     sql = """
-        SELECT * FROM itemcost
-        INNER JOIN item ON item.name=itemcost.item
-        INNER JOIN supermarket ON supermarket.name=itemcost.supermarket
-        INNER JOIN user ON user.username=itemcost.user
+        SELECT itemcost.id, itemcost.date, itemcost.cost, item.name, supermarket.name, user.username  FROM `itemcost` 
+        INNER JOIN user ON itemcost.user_id=user.id
+        INNER JOIN item ON itemcost.item_id=item.id
+        INNER JOIN supermarket ON itemcost.supermarket_id=supermarket.id
         """
         
     cursor.execute(sql)
