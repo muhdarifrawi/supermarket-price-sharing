@@ -102,7 +102,6 @@ def submit_form():
     SQL_SEARCH_BRAND_ID="""
     SELECT id FROM brand WHERE name="{}"
     """.format(brand)
-    
     cursor.execute(SQL_SEARCH_BRAND_ID)
     brand_id = cursor.fetchone()["id"]
     
@@ -120,16 +119,23 @@ def submit_form():
     cursor.execute(SQL_INSERT_BRAND_SUPERMARKET_ID)
     connection.commit()
     
+    #find item_id
     SQL_SEARCH_ITEM_ID="""
     SELECT id FROM item WHERE name="{}"
     """.format(item)
     cursor.execute(SQL_SEARCH_ITEM_ID)
     item_id = cursor.fetchone()["id"] 
     
+    # #find current datetime
+    # SQL_SELECT_DATETIME="""
+    # SELECT CURRENT_TIMESTAMP
+    # """
+    # datetime=cursor.execute(SQL_SELECT_DATETIME)
+    # print(datetime)
     #cost insertion to database
     sql = """
          INSERT INTO itemcost(id, date, cost, user_id, item_id, supermarket_id)
-         VALUES (NULL, NULL, "{}","{}","{}","{}")
+         VALUES (NULL, CURRENT_TIMESTAMP, "{}","{}","{}","{}")
         """.format(itemcost, user_id, item_id,supermarket_id)
     
     cursor.execute(sql)
