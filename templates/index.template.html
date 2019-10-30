@@ -9,56 +9,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Personal CSS -->
-    <link rel="stylesheet" href="static/index.static.css">
-    <title>Share Market</title>
+    <link rel="stylesheet" href="static/index.static.css" type="text/css" />
     
-     
+    <title>Share Market</title>
   </head>
   <body>
     <div class="container">
-      
-      <div class="row">
-      <h1>Share your find!</h1>
-      </div>
-      <div class="row">
-        <div class="col">
-          <form method="post" autocomplete="off">
-            <div class="form-group">
-              <h5>Username</h5>
-              <input type="text" class="form-control" name="username" required>
-            </div>
-            <div class="form-group">
-              <h5>Supermarket</h5>
-              <input type="text" class="form-control" name="supermarket" required>
-            </div>
-            <div class="form-group">
-              <h5>Location</h5>
-              <input type="text" class="form-control" name="location" required>
-            </div>
-            <div class="form-group">
-              <h5>Address</h5>
-              <textarea type="text" class="form-control" name="address" required></textarea>
-            </div>
-            <div class="form-group autocomplete">
-              <h5>Brand</h5>
-              <input type="text" class="form-control" name="brand" id="brand" required>
-            </div>
-            <div class="form-group">
-              <h5>Item</h5>
-              <input type="text" class="form-control" name ="item" required>
-            </div>
-            <div class="form-group">
-              <h5>Price</h5>
-              <input type="text" class="form-control" name="price" required>
-            </div>
-            <input type="submit" value="submit" class="btn btn-primary mb-3">
-          </form>
-        </div>
-      </div>
-      <a href="{{url_for("table")}}">Show table</a>
-    </div>
-    <!-- Optional JavaScript -->
+    <h1>Price Share</h1>
+    <h6>A community based price sharing platform</h6>
     
+    <div class="row">
+    <a href="/submit"><div class="col box red" id="left">
+        <h2>Submit a form</h2>
+    </div></a>
+    <a href="/table"><div class="col box blue" id="right">
+        <h2>See prices</h2>
+    </div></a>
+    </div>
+    
+    </div><!-- Container end div -->
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

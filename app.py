@@ -13,9 +13,13 @@ def get_connection():
         )
     return connection
 
+@app.route("/")
+def homepage():
+    return render_template("index.template.html")
+
 @app.route("/submit")
 def form():
-   return render_template("index.template.html")
+   return render_template("form.template.html")
 
 
 @app.route("/submit", methods=["POST"])
@@ -172,6 +176,13 @@ def edit(itemcost_id):
         
     cursor.execute(sql)
     return render_template("edit.template.html",results=cursor)
+    
+@app.route("/edit/<itemcost_id>", methods=["POST"])
+def submit_edit(itemcost_id):
+    # connection = get_connection()
+    # cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    return "done"
     
 #"magic code" - - boilerplate
 if __name__ == "__main__":
