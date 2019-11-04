@@ -179,10 +179,42 @@ def edit(itemcost_id):
     
 @app.route("/edit/<itemcost_id>", methods=["POST"])
 def submit_edit(itemcost_id):
-    # connection = get_connection()
-    # cursor = connection.cursor(pymysql.cursors.DictCursor)
-
-    return "done"
+    connection = get_connection()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    
+    supermarket = request.form["supermarket"]
+    itemcost = request.form["price"]
+    username = request.form["username"]
+    
+    SQL_UPDATE_USERNAME = """
+    UPDATE `itemcost` 
+    INNER JOIN user ON itemcost.user_id=user.id 
+    SET user.username="{}" WHERE itemcost.id="{}"
+    """.format(username, itemcost_id)
+    
+    cursor.execute(SQL_UPDATE_USERNAME)
+    connection.commit()
+    
+    
+    SQL_UPDATE_SUPERMARKET = """
+    UPDATE `itemcost` 
+    INNER JOIN supermarket ON itemcost.supermarket_id=supermarket.id 
+    SET supermarket.name="{}" WHERE itemcost.id="{}"
+    """.format(supermarket, itemcost_id)
+    
+    cursor.execute(SQL_UPDATE_SUPERMARKET)
+    connection.commit()
+    
+    
+    SQL_UPDATE_COST = """
+    UPDATE `itemcost`SET cost="{}" WHERE itemcost.id="{}"
+    """.format(itemcost, itemcost_id)
+    
+    cursor.execute(SQL_UPDATE_COST)
+    connection.commit()
+    connection.close()
+    
+    return table()
     
 #"magic code" - - boilerplate
 if __name__ == "__main__":

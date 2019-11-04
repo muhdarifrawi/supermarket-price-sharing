@@ -1,6 +1,14 @@
-.box {
-    height:500px;
-    width:500px;
+html, body {
+    height:100%;
+}
+
+.jumbotron {
+    height:50%;
+}
+
+#form-and-table{
+    height:200px;
+    width:100%;
 }
 
 a {
@@ -9,12 +17,16 @@ a {
 
 .red {
     background-color:red;
-    opacity:0.5;
-    transition:1s;
+    opacity:0.8;
+    transition:0.5s;
+    height:100%;
+    width:100%;
 }
 
 .blue {
     background-color:blue;
-    opacity:0.5;
-    transition:1s;
+    opacity:0.8;
+    transition:0.5s;
+    height:100%;
+    width:100%;
 }

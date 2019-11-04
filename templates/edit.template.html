@@ -34,7 +34,7 @@
       <td scope="col"><input type="text" class="form-control" name="price" value={{each_result["cost"]}} required></td>
       <td scope="col"><input type="text" class="form-control" name="supermarket" value={{each_result["supermarket.name"]}} required></td>
       <td scope="col">{{each_result["date"]}}</td>
-      <td scope="col">{{each_result["username"]}}</td>
+      <td scope="col"><input type="text" class="form-control" name="username" value={{each_result["username"]}} required></td>
       
     </tr>
     {%endfor%}
