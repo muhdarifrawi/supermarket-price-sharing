@@ -6,10 +6,10 @@ app = Flask(__name__)
 
 def get_connection():
     connection = pymysql.connect(
-        host='localhost',
-        user='admin',
-        password='password',
-        database='supermarket_price_sharing'
+        host=os.getenv('SQL_HOST'),
+        user=os.getenv('SQL_USER'),
+        password=os.getenv('SQL_PASSWORD'),
+        database=os.getenv('SQL_DATABASE')
         )
     return connection
 
