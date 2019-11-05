@@ -4,10 +4,30 @@ html, body {
 
 .jumbotron {
     height:50%;
+    background-image:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("/static/images/assorted-bottles-and-cans.jpg");
+    background-size:cover;
 }
 
+.jumbo-text-large{
+    color:white;
+}
+
+.jumbo-text-small{
+    color:white;
+}
+
+hr{ 
+  background-color: white;
+}
+  
+.box-text{
+    padding-top: 200px;
+    color:white;
+    
+}
+  
 #form-and-table{
-    height:200px;
+    height:400px;
     width:100%;
 }
 
@@ -16,7 +36,9 @@ a {
 }
 
 .red {
-    background-color:red;
+    background-image:url("/static/images/author-blog.jpg");
+    background-size:cover;
+    /*background-color:red;*/
     opacity:0.8;
     transition:0.5s;
     height:100%;
@@ -24,7 +46,9 @@ a {
 }
 
 .blue {
-    background-color:blue;
+    background-image:url("/static/images/booth-branding.jpg");
+    background-size:cover;
+    /*background-color:blue;*/
     opacity:0.8;
     transition:0.5s;
     height:100%;
