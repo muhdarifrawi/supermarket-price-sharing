@@ -8,21 +8,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Submissions</title>
+    <title>Editor</title>
   </head>
   <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="/">Home</a>
-              <a class="nav-item nav-link" href="/submit">Submit</a>
-              <a class="nav-item nav-link" href="/table">Prices</a>
-            </div>
-        </div>
-    </nav>
-    
     <div class="container">
+      <form method="POST">
       <table class="table">
   <thead>
     <tr>
@@ -45,15 +35,19 @@
       <td scope="col">{{each_result["supermarket.name"]}}</td>
       <td scope="col">{{each_result["date"]}}</td>
       <td scope="col">{{each_result["username"]}}</td>
-      <td scope="col"><a href="{{url_for('edit', itemcost_id=each_result['id'])}}">Edit</a></td>
-      <td scope="col"><a href="{{url_for('delete_confirmation', itemcost_id=each_result['id'])}}">Delete</a></td>
+      
     </tr>
     {%endfor%}
   </tbody>
   
-  <a href="{{url_for("form")}}">Back to Form</a>
+  
+  
 </table>
-      
+ 
+  <input type="submit" value="Confirm" class="btn btn-primary mb-3">
+  <a href="{{url_for("table")}}" class="btn btn-primary" role="button">Back To tables</a>
+  <a href="{{url_for("table")}}">Back to Tables</a>
+  </form>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

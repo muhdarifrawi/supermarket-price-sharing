@@ -11,21 +11,28 @@ app = Flask(__name__)
 
 def get_connection():
     
-    url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
-    name = url.path[1:]
-    user = url.username
-    password= url.password
-    host = url.hostname
-    port= url.port
+    # url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
+    # name = url.path[1:]
+    # user = url.username
+    # password= url.password
+    # host = url.hostname
+    # port= url.port
 
     
+    # connection = pymysql.connect(
+    #     host=host,
+    #     user=user,
+    #     password=password,
+    #     port=port,
+    #     database=name
+    #     )
+        
     connection = pymysql.connect(
-        host=host,
-        user=user,
-        password=password,
-        port=port,
-        database=name
-        )
+        host=os.getenv('SQL_HOST'),
+        user=os.getenv('SQL_USER'),
+        password=os.getenv('SQL_PASSWORD'),
+        database=os.getenv('SQL_DATABASE')
+        )	        
     return connection
 
 @app.route("/")
@@ -62,8 +69,8 @@ def submit_form():
     #search and select user_id
     
     SQL_SEARCH_USER_ID="""
-    SELECT id FROM user WHERE username="{}"
-    """.format(username)
+    SELECT * FROM user ORDER BY id DESC LIMIT 1
+    """
     
     cursor.execute(SQL_SEARCH_USER_ID)
     user_id = cursor.fetchone()["id"] 
@@ -86,8 +93,8 @@ def submit_form():
     #search and select supermarket id
     
     SQL_SEARCH_SUPERMARKET_ID="""
-    SELECT id FROM supermarket WHERE name="{}"
-    """.format(supermarket)
+    SELECT * FROM supermarket ORDER BY id DESC LIMIT 1
+    """
     
     cursor.execute(SQL_SEARCH_SUPERMARKET_ID)
     supermarket_id = cursor.fetchone()["id"] 
@@ -127,7 +134,6 @@ def submit_form():
     SQL_INSERT_BRAND_ID="""
     INSERT INTO `item` (`id`, `brand_id`, `name`) VALUES (NULL,"{}","{}")
     """.format(brand_id, item) 
-    print(SQL_INSERT_BRAND_ID)
     cursor.execute(SQL_INSERT_BRAND_ID)
     connection.commit()
     
@@ -228,6 +234,101 @@ def submit_edit(itemcost_id):
     cursor.execute(SQL_UPDATE_COST)
     connection.commit()
     connection.close()
+    
+    return table()
+
+
+@app.route("/delete/<itemcost_id>")
+def delete_confirmation(itemcost_id):
+    connection = get_connection()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    
+    #username retrieval from database
+    sql = """
+        SELECT itemcost.id, itemcost.date, itemcost.cost, item.name, supermarket.name, user.username  FROM `itemcost` 
+        INNER JOIN user ON itemcost.user_id=user.id
+        INNER JOIN item ON itemcost.item_id=item.id
+        INNER JOIN supermarket ON itemcost.supermarket_id=supermarket.id
+        WHERE itemcost.id="{}"
+        """.format(itemcost_id)
+        
+    cursor.execute(sql)
+    return render_template("delete.template.html",results=cursor)
+    
+@app.route("/delete/<itemcost_id>", methods=["POST"])
+def delete_confirmed(itemcost_id):
+    connection = get_connection()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    
+   
+    
+    #delete location_supermarket relation
+    #search supermarket id
+    SQL_SELECT_SUPERMARKET_ID="""
+    SELECT supermarket_id FROM itemcost INNER JOIN supermarket 
+    ON itemcost.supermarket_id=supermarket.id 
+    WHERE itemcost.id="{}"
+    """.format(itemcost_id)
+    
+    cursor.execute(SQL_SELECT_SUPERMARKET_ID)
+    supermarket_id = cursor.fetchone()["supermarket_id"]
+    print("Look here: ")
+    print(supermarket_id)
+    #select location_supermarket id's
+    
+    SQL_SELECT_LOCATION_SUPERMARKET_ID="""
+    SELECT location_id, supermarket_id FROM location_supermarket WHERE supermarket_id="{}"
+    """.format(supermarket_id)
+    
+    cursor.execute(SQL_SELECT_LOCATION_SUPERMARKET_ID)
+    
+    #deleting relation
+    SQL_DELETE_LOCATION_SUPERMARKET_RELATION="""
+    DELETE FROM location_supermarket WHERE supermarket_id="{}"
+    """.format(supermarket_id)
+    
+    cursor.execute(SQL_DELETE_LOCATION_SUPERMARKET_RELATION)
+    connection.commit()
+    
+    SQL_DELETE_BRAND_SUPERMARKET_RELATION="""
+    DELETE FROM brand_supermarket WHERE supermarket_id="{}"
+    """.format(supermarket_id)
+    
+    cursor.execute(SQL_DELETE_BRAND_SUPERMARKET_RELATION)
+    connection.commit()
+    
+    #delete location
+    SQL_DELETE_LOCATION="""
+    DELETE FROM location WHERE ID="{}"
+    """.format(supermarket_id)
+    
+    cursor.execute(SQL_DELETE_LOCATION)
+    connection.commit()
+    
+    #delete supermarket
+    SQL_DELETE_SUPERMARKET="""
+    DELETE FROM supermarket WHERE id="{}"
+    """.format(supermarket_id)
+    
+    cursor.execute(SQL_DELETE_SUPERMARKET)
+    connection.commit()
+    
+    #delete item
+    SQL_DELETE_ITEM="""
+    DELETE FROM item WHERE id="{}"
+    """.format(itemcost_id)
+    
+    cursor.execute(SQL_DELETE_ITEM)
+    connection.commit()
+    
+    #delete user
+    SQL_DELETE_USER="""
+    DELETE FROM user WHERE id="{}"
+    """.format(itemcost_id)
+    
+    cursor.execute(SQL_DELETE_USER)
+    connection.commit()
     
     return table()
     
