@@ -21,8 +21,11 @@ hr{
 }
   
 .box-text{
-    padding-top: 200px;
+    margin-top: 190px;
+    padding-top:10px;
+    padding-bottom:10px;
     color:white;
+    background-color:green;
     
 }
   

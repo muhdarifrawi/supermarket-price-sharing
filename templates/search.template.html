@@ -8,11 +8,38 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Editor</title>
+    <title>Submissions</title>
   </head>
   <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="/">Home</a>
+              <a class="nav-item nav-link" href="/submit">Submit</a>
+              <a class="nav-item nav-link" href="/table">Prices</a>
+              <a class="nav-item nav-link" href="/search">Search</a>
+            </div>
+        </div>
+    </nav>
+    
     <div class="container">
+      
       <form method="POST">
+        <div class="my-4">
+          <select class="custom-select" name="search-bar">
+            <option selected>Search by</option>
+            <option value="1">Item</option>
+            <option value="2">Supermarket</option>
+            <option value="3">User</option>
+          </select>
+        </div>
+        <div class="my-4">
+          <input type="text" class="form-control" name="search-input" >
+        </div>
+        <input type="submit" value="Search" class="btn btn-primary mb-3"/>
+      </form>
+      
       <table class="table">
   <thead>
     <tr>
@@ -31,22 +58,19 @@
     <tr>
       <th scope="col">{{each_result["id"]}}</th>
       <td scope="col">{{each_result["name"]}}</td>
-      <td scope="col"><input type="text" class="form-control" name="price" value={{each_result["cost"]}} required></td>
-      <td scope="col"><input type="text" class="form-control" name="supermarket" value={{each_result["supermarket.name"]}} required></td>
+      <td scope="col">{{each_result["cost"]}}</td>
+      <td scope="col">{{each_result["supermarket.name"]}}</td>
       <td scope="col">{{each_result["date"]}}</td>
-      <td scope="col"><input type="text" class="form-control" name="username" value={{each_result["username"]}} required></td>
-      
+      <td scope="col">{{each_result["username"]}}</td>
+      <td scope="col"><a href="{{url_for('edit', itemcost_id=each_result['id'])}}">Edit</a></td>
+      <td scope="col"><a href="{{url_for('delete_confirmation', itemcost_id=each_result['id'])}}">Delete</a></td>
     </tr>
     {%endfor%}
   </tbody>
   
   
-  
 </table>
- 
-  <input type="submit" value="Submit" class="btn btn-primary mb-3">
-  <a href="{{url_for("table")}}" class="btn btn-primary mb-3" role="button">Cancel</a>
-  </form>
+      
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

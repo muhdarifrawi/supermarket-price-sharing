@@ -261,8 +261,6 @@ def delete_confirmed(itemcost_id):
     connection = get_connection()
     cursor = connection.cursor(pymysql.cursors.DictCursor)
     
-   
-    
     #delete location_supermarket relation
     #search supermarket id
     SQL_SELECT_SUPERMARKET_ID="""
@@ -332,6 +330,58 @@ def delete_confirmed(itemcost_id):
     
     return table()
     
+@app.route("/search")
+def search_page():
+    return render_template("search.template.html")
+    
+@app.route("/search", methods=["POST"])
+def search():
+    connection = get_connection()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    search_term = request.form["search-bar"]
+    search_input = request.form["search-input"]
+    
+    if search_term == "1":
+        SQL_SEARCH_BY_ITEM = """
+        SELECT itemcost.id, itemcost.date, itemcost.cost, item.name, supermarket.name, user.username  FROM `itemcost` 
+        INNER JOIN user ON itemcost.user_id=user.id
+        INNER JOIN item ON itemcost.item_id=item.id
+        INNER JOIN supermarket ON itemcost.supermarket_id=supermarket.id
+        WHERE item.name="{}"
+        """.format(search_input)
+        
+        cursor.execute(SQL_SEARCH_BY_ITEM)
+        return render_template("search.template.html", results=cursor)
+        
+    elif search_term == "2":
+        SQL_SEARCH_BY_SUPERMARKET = """
+        SELECT itemcost.id, itemcost.date, itemcost.cost, item.name, supermarket.name, user.username  FROM `itemcost` 
+        INNER JOIN user ON itemcost.user_id=user.id
+        INNER JOIN item ON itemcost.item_id=item.id
+        INNER JOIN supermarket ON itemcost.supermarket_id=supermarket.id
+        WHERE supermarket.name="{}"
+        """.format(search_input)
+        
+        cursor.execute(SQL_SEARCH_BY_SUPERMARKET)
+        return render_template("search.template.html", results=cursor)
+    
+    else:
+        SQL_SEARCH_BY_USER = """
+        SELECT itemcost.id, itemcost.date, itemcost.cost, item.name, supermarket.name, user.username  FROM `itemcost` 
+        INNER JOIN user ON itemcost.user_id=user.id
+        INNER JOIN item ON itemcost.item_id=item.id
+        INNER JOIN supermarket ON itemcost.supermarket_id=supermarket.id
+        WHERE user.username="{}"
+        """.format(search_input)
+        
+        cursor.execute(SQL_SEARCH_BY_USER)
+        return render_template("search.template.html", results=cursor)
+    
+    
+    # return render_template("search.template.html")    
+
+
+
 #"magic code" - - boilerplate
 if __name__ == "__main__":
    app.run(host=os.environ.get("IP"),
