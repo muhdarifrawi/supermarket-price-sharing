@@ -21,9 +21,9 @@ Database: MySQL with phpMyAdmin
 
 ## Wireframes
 
-Entity Relationship Diagram:
+![Entity Relationship Diagram](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/Project%203%20ER%20Diagram.png)
 
-Logic Data Diagram:
+![Logic Data Diagram](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/Project%203%20Logic%20Diagram.png)
 
 ## Features
 
