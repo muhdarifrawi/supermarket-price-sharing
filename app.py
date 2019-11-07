@@ -376,34 +376,6 @@ def search():
         
         cursor.execute(SQL_SEARCH_BY_USER)
         return render_template("search.template.html", results=cursor)
-    
-    
-    # return render_template("search.template.html")    
-
-
-@app.route("/temp")
-def temp():
-   
-   return render_template("temp.template.html")
-
-@app.route("/temp", methods=["POST"])
-def temp_run():
-    connection = get_connection()
-    cursor = connection.cursor(pymysql.cursors.DictCursor)
-    #brands insertion into database
-    
-    brands = ["Aaa","Alpen","Amazin Grace","Arnotts","Ayam Brand","Bahlsen","Britannia","Brookfarm","Cadbury","Calbee","Camel","Captain Oats","Carman'S","Chupa Chups","Cj","Cowhead","Crusty'S","Del Monte","Ego","Fairprice","Farmland","Fisherman","Food For Friends","Freedom Foods","Frezfruta","Gardenia","Glico","Golden Chef","Golden Rice Box","Gulong","Haldiram'S","Haribo","Harvest Fields","Hershey'S","Highway","Hosen","Hunted + Gathered","Jack 'N Jill","John West","Julie'S","Kangshifu","Kellogg'S","Khong Guan","Kinder Bueno","Kirkland","Kit,Kat","Koka","Kraft","Lakerol","Lay'S","Lindt","Loacker","Lotte","Maggi","Mayvers","Meiji","Mili","Mission","M&M'S","Munchy'S","Myojo","Narcissus","Nature'S Wonders","Nestle","New Moon","Nissin","Nongshim","Oreo","Origins","Ottogi","Peter Pan","Post","Prima Taste","Pringles","Quaker","Redondo","Ricola","Ritter Sport","Samyang","Sing Long","Skippy","Smuckers","St.Dalfour","Strepsils","Sunshine","S&W","Tai Sun","Tao Kae Noi","Tesco","Tesco Finest","The Natural Confectionery Co.","Tohato","Tong Garden","Town Bus","Tulip","Twisties","Uha","Vicks","Yifon","Yum Earth"];
-    
-    for each_brands in brands:
-        sql = """
-             INSERT INTO brand(id, name)
-             VALUES (NULL, "{}")
-            """.format(each_brands)
-        
-        cursor.execute(sql)
-        connection.commit()
-        
-    return render_template("temp.template.html")
 
 #"magic code" - - boilerplate
 if __name__ == "__main__":
