@@ -14,35 +14,35 @@
     <div class="container">
       <form method="POST">
       <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Item</th>
-      <th scope="col">Cost</th>
-      <th scope="col">Supermarket</th>
-      <th scope="col">Date/Time</th>
-      <th scope="col">User</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for each_result in results %}
-    <tr>
-      <th scope="col">{{each_result["id"]}}</th>
-      <td scope="col">{{each_result["name"]}}</td>
-      <td scope="col"><input type="text" class="form-control" name="price" value={{each_result["cost"]}} required></td>
-      <td scope="col"><input type="text" class="form-control" name="supermarket" value={{each_result["supermarket.name"]}} required></td>
-      <td scope="col">{{each_result["date"]}}</td>
-      <td scope="col"><input type="text" class="form-control" name="username" value={{each_result["username"]}} required></td>
-      
-    </tr>
-    {%endfor%}
-  </tbody>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Supermarket</th>
+            <th scope="col">Date/Time</th>
+            <th scope="col">User</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for each_result in results %}
+          <tr>
+            <th scope="col">{{each_result["id"]}}</th>
+            <td scope="col"><input type="text" class="form-control" name="item" value={{each_result["name"]}}></td>
+            <td scope="col"><input type="text" class="form-control" name="price" value={{each_result["cost"]}} required></td>
+            <td scope="col"><input type="text" class="form-control" name="supermarket" value={{each_result["supermarket.name"]}} required></td>
+            <td scope="col">{{each_result["date"]}}</td>
+            <td scope="col"><input type="text" class="form-control" name="username" value={{each_result["username"]}} required></td>
+            
+          </tr>
+          {%endfor%}
+        </tbody>
   
   
   
-</table>
+    </table>
  
   <input type="submit" value="Submit" class="btn btn-success mb-3">
   <a href="{{url_for("table")}}" class="btn btn-success mb-3" role="button">Cancel</a>

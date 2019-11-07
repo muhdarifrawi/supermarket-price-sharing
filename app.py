@@ -11,28 +11,28 @@ app = Flask(__name__)
 
 def get_connection():
     
-    # url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
-    # name = url.path[1:]
-    # user = url.username
-    # password= url.password
-    # host = url.hostname
-    # port= url.port
+    url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
+    name = url.path[1:]
+    user = url.username
+    password= url.password
+    host = url.hostname
+    port= url.port
 
     
-    # connection = pymysql.connect(
-    #     host=host,
-    #     user=user,
-    #     password=password,
-    #     port=port,
-    #     database=name
-    #     )
-        
     connection = pymysql.connect(
-        host=os.getenv('SQL_HOST'),
-        user=os.getenv('SQL_USER'),
-        password=os.getenv('SQL_PASSWORD'),
-        database=os.getenv('SQL_DATABASE')
-        )	        
+        host=host,
+        user=user,
+        password=password,
+        port=port,
+        database=name
+        )
+        
+    # connection = pymysql.connect(
+    #     host=os.getenv('SQL_HOST'),
+    #     user=os.getenv('SQL_USER'),
+    #     password=os.getenv('SQL_PASSWORD'),
+    #     database=os.getenv('SQL_DATABASE')
+    #     )	        
     return connection
 
 @app.route("/")
@@ -206,6 +206,7 @@ def submit_edit(itemcost_id):
     supermarket = request.form["supermarket"]
     itemcost = request.form["price"]
     username = request.form["username"]
+    item = request.form["item"]
     
     SQL_UPDATE_USERNAME = """
     UPDATE `itemcost` 
@@ -233,8 +234,18 @@ def submit_edit(itemcost_id):
     
     cursor.execute(SQL_UPDATE_COST)
     connection.commit()
-    connection.close()
     
+    
+    SQL_UPDATE_ITEMNAME = """
+    UPDATE `itemcost` 
+    INNER JOIN item ON itemcost.item_id=item.id 
+    SET item.name="{}" WHERE itemcost.id="{}"
+    """.format(item, itemcost_id)
+    
+    cursor.execute(SQL_UPDATE_ITEMNAME)
+    connection.commit()
+    
+    connection.close()
     return table()
 
 
@@ -271,8 +282,6 @@ def delete_confirmed(itemcost_id):
     
     cursor.execute(SQL_SELECT_SUPERMARKET_ID)
     supermarket_id = cursor.fetchone()["supermarket_id"]
-    print("Look here: ")
-    print(supermarket_id)
     #select location_supermarket id's
     
     SQL_SELECT_LOCATION_SUPERMARKET_ID="""
