@@ -25,9 +25,9 @@ Database: MySQL with phpMyAdmin
 
 A quick brainstorm was done to generate ideas on how the database and the website would look like. [Microsoft Powerpoint](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/Project%203%20brainstorm.pptx) was used to collate the concepts. Shown below are the end product of the brainstorm. 
 
-![Entity Relationship Diagram](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/Project%203%20ER%20Diagram.png)
+![Entity Relationship Diagram](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/images/Project%203%20ER%20Diagram.png)
 
-![Logic Data Diagram](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/Project%203%20Logic%20Diagram.png)
+![Logic Data Diagram](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/images/Project%203%20Logic%20Diagram.png)
 
 ## Features
 
