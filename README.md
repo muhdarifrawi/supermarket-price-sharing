@@ -45,6 +45,8 @@ The search link would lead them to the search page where they would see a "Searc
 
 ## Testing
 
+##### All testing are done manually. No auto-testing application were used.
+
 ###### The navbar:
 - Clicking on each of the links should lead them to their respective pages. "Home" should lead users to the landing page. "Submit" leads them to the form submission page. "Prices" would lead them to the price table page. And "Search" leads them to the search page. Each of the links works as described. 
 
