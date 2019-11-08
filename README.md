@@ -34,3 +34,22 @@ Clicking on the "Home" link would bring them back to the index page. CLicking on
 From the index page, if the user chose to click on the "prices" link or the image labeled "See prices", they would be lead to the tables page. Once there they would see the entries made by them or other users. On the right most of the entry, there would be an edit and delete link. Clicking on edit would lead them to the edit page where they can revise the item name, cost, supermarket and their username. These fields are mandatory to be filled. If they are satisfied, they can press submit and the application would update their changes. They can click on cancel if they don't wish to update and there would be no changes made. Clicking on the delete link would lead them to the delete page where they can either press confirm where the entry would be removed completely or they can cancel the deletion. 
 
 The search link would lead them to the search page where they would see a "Search by" dropdown list consisting of Items, Supermarket and User. They would have to select one option and key in the search term they wish to look up. It would then return the results in a table format similar to the prices page.
+
+## Testing
+
+The navbar:
+	- Clicking on each of the links should lead them to their respective pages. "Home" should lead users to the landing page. "Submit" leads them to the form submission page. "Prices" would lead them to the price table page. And "Search" leads them to the search page. Each of the links works as described. 
+
+Home/landing page: 
+	- Users would be greeted with a jumbotron and two small images at the bottom of it. All images loads but the images loads slow. On the jumbotron iteself, there is a "Contribute" button. This button when clicked, leads users to the form submission page. This function is working as intended. 
+	- At the bottom left of the jumbotron, an image with the label "Submit form". When clicked, leads users to the form page. There are no issues with it. 
+	- At the bottom right of the jumbotron, an image with the label "See prices". When clicked, leads users to the table page. 
+
+Form page: 
+	- Users would see a form with 7 input boxes. They are to key in their preferred Username, the supermarket they went, the location, address, brand of the item, the item name itself and finally the price. These input boxes are all mandatory to be filled and are checked by bootstrap's "required" field class. 
+  - The input field for brand though has a javascript that autosuggests the brand names. These are codes borrowed from W3school and altered to suit the purpose of the application. More info on it can be found on the Acknowledgements section.
+ 
+ ## Acknowledgements
+ 
+ Raw Code can be found here:
+  [js autocomplete by w3school](https://www.w3schools.com/howto/howto_js_autocomplete.asp). 
