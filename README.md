@@ -131,8 +131,8 @@ return render_template("temp.template.html")
 			<h1>Commence data loading</h1>
 			<form method="POST">
 				<input type="submit" class="btn btn-primary mb-3" >
-				</form>
-			</div>
+			</form>
+			
 			<!-- Optional JavaScript -->
 			<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -149,5 +149,26 @@ return render_template("temp.template.html")
  
  ## Acknowledgements
  
+ The JavaScript for autocomplete are made by w3school. The following changes were made:
+  - Added "var = document.getElementById("brand")
+  - Changed array to brand names instead of countries.
+  - The CSS code for the buttons and text sizes were removed as they were overwriting the bootstrap formatting.
  Raw Code can be found here:
   [js autocomplete by w3school](https://www.w3schools.com/howto/howto_js_autocomplete.asp). 
+
+Pictures used were taken from [Pexels](https://www.pexels.com/)
+
+The following pictures were used:
+- assorted bottles and cans
+	- Photo by junjie xu from Pexels
+
+- grocery cart
+	- Photo by Oleg Magni from Pexels
+
+- booth branding
+	- Photo by Pixabay from Pexels
+
+- author blog
+	- Photo by Pixabay from Pexels
+	
+Brands to populate autocomplete were taken from the [NTUC online shop](https://www.fairprice.com.sg/category/food-cupboard).
