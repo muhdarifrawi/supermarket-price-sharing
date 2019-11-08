@@ -37,17 +37,28 @@ The search link would lead them to the search page where they would see a "Searc
 
 ## Testing
 
-The navbar:
-	- Clicking on each of the links should lead them to their respective pages. "Home" should lead users to the landing page. "Submit" leads them to the form submission page. "Prices" would lead them to the price table page. And "Search" leads them to the search page. Each of the links works as described. 
+###### The navbar:
+- Clicking on each of the links should lead them to their respective pages. "Home" should lead users to the landing page. "Submit" leads them to the form submission page. "Prices" would lead them to the price table page. And "Search" leads them to the search page. Each of the links works as described. 
 
-Home/landing page: 
-	- Users would be greeted with a jumbotron and two small images at the bottom of it. All images loads but the images loads slow. On the jumbotron iteself, there is a "Contribute" button. This button when clicked, leads users to the form submission page. This function is working as intended. 
-	- At the bottom left of the jumbotron, an image with the label "Submit form". When clicked, leads users to the form page. There are no issues with it. 
-	- At the bottom right of the jumbotron, an image with the label "See prices". When clicked, leads users to the table page. 
+###### Home/landing page: 
+- Users would be greeted with a jumbotron and two small images at the bottom of it. All images loads but the images loads slow. On the jumbotron iteself, there is a "Contribute" button. This button when clicked, leads users to the form submission page. This function is working as intended. 
+- At the bottom left of the jumbotron, an image with the label "Submit form". When clicked, leads users to the form page. There are no issues with it. 
+- At the bottom right of the jumbotron, an image with the label "See prices". When clicked, leads users to the table page. 
 
-Form page: 
-	- Users would see a form with 7 input boxes. They are to key in their preferred Username, the supermarket they went, the location, address, brand of the item, the item name itself and finally the price. These input boxes are all mandatory to be filled and are checked by bootstrap's "required" field class. 
-  - The input field for brand though has a javascript that autosuggests the brand names. These are codes borrowed from W3school and altered to suit the purpose of the application. More info on it can be found on the Acknowledgements section.
+###### Form page: 
+- Users would see a form with 7 input boxes. They are to key in their preferred Username, the supermarket they went, the location, address, brand of the item, the item name itself and finally the price. These input boxes are all mandatory to be filled and are checked by bootstrap's "required" field class. 
+ - The input field for brand though has a javascript that autosuggests the brand names. These are codes borrowed from W3school and altered to suit the purpose of the application. More info on it can be found on the [acknowledgements section](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/README.md#acknowledgements). This input field is made to ease the fetching of information from the database. However it is not perfect and more could be done. One issue with it that was found was that the autocomplete leaves out the apostrophes when user selects their choices. This causes confusion in the database. 
+ 
+ Here is a short gif of it that explains better:
+ ![Autocomplete Issue](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/videos/Autocomplete%20Issues.gif)
+ 
+ ###### Prices page: 
+ - Prices page shows the table of the database. 
+ - Each line of entry has each own edit and delete links. 
+ - Clicking on the edit would lead to the edit page where users can edit their entry. One of the issues that was found quite late into programming this was that the item names and supermarket names were not appearing in full. Other than that, the confirm and cancel buttons were working. 
+ - The link to the deletion page was working. User is able to delete their entry from the front-end. However, at the back-end, the data was not completely erased. Only the itemcost table was cleared hence why the data was not appearing on the front-end. 
+ 
+ 
  
  ## Acknowledgements
  
