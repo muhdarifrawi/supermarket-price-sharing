@@ -7,6 +7,10 @@ In this project, we were adviced not to create a login page as that would be res
 
 This application has been deployed to Heroku where you can find by clicking here. This application would not run proper as a github deployment. Also, I have yet to find a way to run the file locally after downloading from the repository. If you happen to know how, feel free to run it. 
 
+Here is a short demo: 
+
+![Quick Demo Gif](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/videos/Project%203%20Quick%20Demo.gif)
+
 ## UI/UX
 
 Users who potentially might use this often would be someone in their 30s or 40s. Here in Singapore, often times people above this age would lookout for great deals. They are known to be quick on their feet when it comes to getting great deals. 
