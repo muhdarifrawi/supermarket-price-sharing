@@ -1,6 +1,8 @@
 # Price Share
 Price Share is a fictious platform where users can submit prices of items they may have came across or bought during their shopping trip. From there, other users can look for good deals that they might have missed out on. For ease of use, the platform adopts a minamilistic approach to design. 
 
+In this project, we were adviced not to create a login page as that would be reserved for a future project.
+
 ## Getting Started
 
 This application has been deployed to Heroku where you can find by clicking here. This application would not run proper as a github deployment. Also, I have yet to find a way to run the file locally after downloading from the repository. If you happen to know how, feel free to run it. 
@@ -20,6 +22,8 @@ Framework: Flask
 Database: MySQL with phpMyAdmin
 
 ## Wireframes
+
+A quick brainstorm was done to generate ideas on how the database and the website would look like. [Microsoft Powerpoint](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/Project%203%20brainstorm.pptx) was used to collate the concepts. Shown below are the end product of the brainstorm. 
 
 ![Entity Relationship Diagram](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/Project%203%20ER%20Diagram.png)
 
@@ -172,3 +176,7 @@ The following pictures were used:
 	- Photo by Pixabay from Pexels
 	
 Brands to populate autocomplete were taken from the [NTUC online shop](https://www.fairprice.com.sg/category/food-cupboard).
+
+## Final Note
+
+The project was made for education purpose only. If you happen to come across this project and find it useful, feel free to use parts of my codes and link/acknowledge this page. Thank you!
