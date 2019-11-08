@@ -49,7 +49,7 @@ The search link would lead them to the search page where they would see a "Searc
 - Users would see a form with 7 input boxes. They are to key in their preferred Username, the supermarket they went, the location, address, brand of the item, the item name itself and finally the price. These input boxes are all mandatory to be filled and are checked by bootstrap's "required" field class. 
  - The input field for brand though has a javascript that autosuggests the brand names. These are codes borrowed from W3school and altered to suit the purpose of the application. More info on it can be found on the [acknowledgements section](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/README.md#acknowledgements). This input field is made to ease the fetching of information from the database. However it is not perfect and more could be done. One issue with it that was found was that the autocomplete leaves out the apostrophes when user selects their choices. This causes confusion in the database. 
  
- Here is a short gif of it that explains better:
+ Here is a short gif that explains better:
  ![Autocomplete Issue](https://github.com/muhdarifrawi/supermarket-price-sharing/blob/master/wireframes/videos/Autocomplete%20Issues.gif)
  
  ###### Prices page: 
@@ -58,7 +58,37 @@ The search link would lead them to the search page where they would see a "Searc
  - Clicking on the edit would lead to the edit page where users can edit their entry. One of the issues that was found quite late into programming this was that the item names and supermarket names were not appearing in full. Other than that, the confirm and cancel buttons were working. 
  - The link to the deletion page was working. User is able to delete their entry from the front-end. However, at the back-end, the data was not completely erased. Only the itemcost table was cleared hence why the data was not appearing on the front-end. 
  
+ ###### Search page: 
+ - Search page shows a dropdown of things users can search by. They can search by items, supermarkets or usernames. 
+ - Below it, is an input text where users have to enter before clicking on the search button. 
+ - Before any search or if there are no results, the table would be empty. 
  
+ ## Issues and Future Improvements
+ 
+ Improvements deifnitely can be made in this project. 
+ 
+ - At the landing page, there was an intent to show the latest entry from users. This could be implemented in later revisions of this application. 
+ 
+ - As stated, the Brand input from forms page could be made better. Finding a way such that the autocomplete would include the apostrophe. Also, having an option for users to add in brands that are not within the auto complete. As of now, there is no defensive programming added if users were to key in brands not found in the autocomplete. 
+ 
+ - Under the supermarket, location and address, future implementation from previous [Mapbox project](https://github.com/muhdarifrawi/foursquare_mapboxgl) could have been used to autofill these fields.
+ 
+ - The table page could be made better by adding a link to show the location and address of the supermarket. Brands should have been shown as well. 
+ 
+ - The edit page could be made better by expanding the text input field. 
+ 
+ - The search function could have been made better if it could show "No information found" if no data is found on the database. Also, the "Search by" dropdown could show the current field the user is searching by and the input field could show what they have typed. 
+
+ - Other implementations would be to add in graphs or charts showing relevant information users might be interested in. 
+ 
+ ## Additional Information
+ 
+ A temporary code and template was used to upload the list of brands to the database.
+ 
+ 
+ ## Deployment
+ 
+ Deployment is done via Heroku with the add-on ClearDB installed. You can find the Heroku page here and the deployed page here. 
  
  ## Acknowledgements
  
