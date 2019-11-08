@@ -11,28 +11,28 @@ app = Flask(__name__)
 
 def get_connection():
     
-    # url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
-    # name = url.path[1:]
-    # user = url.username
-    # password= url.password
-    # host = url.hostname
-    # port= url.port
+    url = urlparse(os.environ['CLEARDB_DATABASE_URL'])
+    name = url.path[1:]
+    user = url.username
+    password= url.password
+    host = url.hostname
+    port= url.port
 
     
-    # connection = pymysql.connect(
-    #     host=host,
-    #     user=user,
-    #     password=password,
-    #     port=port,
-    #     database=name
-    #     )
-        
     connection = pymysql.connect(
-        host=os.getenv('SQL_HOST'),
-        user=os.getenv('SQL_USER'),
-        password=os.getenv('SQL_PASSWORD'),
-        database=os.getenv('SQL_DATABASE')
-        )	        
+        host=host,
+        user=user,
+        password=password,
+        port=port,
+        database=name
+        )
+        
+    # connection = pymysql.connect(
+    #     host=os.getenv('SQL_HOST'),
+    #     user=os.getenv('SQL_USER'),
+    #     password=os.getenv('SQL_PASSWORD'),
+    #     database=os.getenv('SQL_DATABASE')
+    #     )	        
     return connection
 
 @app.route("/")
